@@ -44,7 +44,7 @@ public class ProjectServiceImpl implements ProjectService {
         HttpEntity<Object> entity = new HttpEntity<>(null, headers);
         if (project.isPresent()) {
             DepartmentDTO departmentDTO = restTemplate
-                    .exchange("http://localhost:8080/api/department/"
+                    .exchange("http://STAFF-SERVICE:8080/staff-management/api/department/"
                                     + project.get().getDepartmentId(),
                             HttpMethod.GET,
                             entity,
@@ -66,7 +66,7 @@ public class ProjectServiceImpl implements ProjectService {
         Set<OutputProjectDTO> result = projects.parallelStream().map(projectEntity -> {
             OutputProjectDTO outputProjectDTO = modelMapper.map(projectEntity, OutputProjectDTO.class);
             DepartmentDTO departmentDTO = restTemplate
-                    .exchange("http://localhost:8080/api/department/"
+                    .exchange("http://STAFF-SERVICE:8080/staff-management/api/department/"
                                     + projectEntity.getDepartmentId(),
                             HttpMethod.GET,
                             entity,

@@ -56,7 +56,7 @@ public class TaskServiceImpl implements TaskService {
         HttpEntity<Object> entity = new HttpEntity<>(null, headers);
         if (task.isPresent()) {
             EmployeeDTO employeeDTO = restTemplate
-                    .exchange("http://localhost:8080/api/employee/"
+                    .exchange("http://STAFF-SERVICE:8080/staff-management/api/employee/"
                                     + task.get().getEmployeeId(),
                             HttpMethod.GET,
                             entity,
@@ -82,7 +82,7 @@ public class TaskServiceImpl implements TaskService {
             Set<OutputTaskDTO> result = tasks.parallelStream().map(taskEntity -> {
                 OutputTaskDTO outputTaskDTO = modelMapper.map(taskEntity, OutputTaskDTO.class);
                 EmployeeDTO employeeDTO = restTemplate
-                        .exchange("http://localhost:8080/api/employee/"
+                        .exchange("http://STAFF-SERVICE:8080/staff-management/api/employee/"
                                         + taskEntity.getEmployeeId(),
                                 HttpMethod.GET,
                                 entity,
