@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/api/task")
+@RequestMapping("/project-management/api/task")
 public class TaskController {
 
     @Autowired
@@ -30,7 +30,7 @@ public class TaskController {
         return taskService.getTask(taskId, auth);
     }
 
-    @GetMapping("/department/{id}")
+    @GetMapping("/project/{id}")
     public ResponseEntity<Set<OutputTaskDTO>> getTasks(@PathVariable(name = "id") Long projectId,
                                                     @RequestHeader(value = "Authorization") String auth) {
         return taskService.getTasks(projectId, auth);
